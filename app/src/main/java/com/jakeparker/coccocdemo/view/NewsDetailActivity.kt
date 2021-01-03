@@ -9,7 +9,10 @@ import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
+import androidx.webkit.WebSettingsCompat
+import androidx.webkit.WebViewFeature
 import com.jakeparker.coccocdemo.Constants
+import com.jakeparker.coccocdemo.Preferences
 import com.jakeparker.coccocdemo.databinding.ActivityNewsDetailBinding
 
 class NewsDetailActivity : AppCompatActivity() {
@@ -42,6 +45,21 @@ class NewsDetailActivity : AppCompatActivity() {
 
     private fun setupWebView() {
         binding.apply {
+            if (WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK)
+                && Preferences.getInstance(this@NewsDetailActivity).isContainDarkModeFlag()
+            ) {
+                if (Preferences.getInstance(this@NewsDetailActivity).getDarkModeFlag()) {
+                    WebSettingsCompat.setForceDark(
+                        wvNewsContent.settings,
+                        WebSettingsCompat.FORCE_DARK_ON
+                    )
+                } else {
+                    WebSettingsCompat.setForceDark(
+                        wvNewsContent.settings,
+                        WebSettingsCompat.FORCE_DARK_OFF
+                    )
+                }
+            }
             wvNewsContent.settings.loadWithOverviewMode = true
             wvNewsContent.settings.useWideViewPort = true
             wvNewsContent.settings.javaScriptEnabled = true

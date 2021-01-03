@@ -50,6 +50,7 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:1.2.0-beta01"
     implementation "androidx.cardview:cardview:1.0.0"
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+    implementation 'androidx.webkit:webkit:1.4.0'
 
     //Retrofit & OKhttp
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'

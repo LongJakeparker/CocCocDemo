@@ -37,4 +37,8 @@ class Preferences private constructor(val context: Context) {
     fun getDarkModeFlag(): Boolean {
         return sharedPreferences.getBoolean(IS_DARK_MODE, false)
     }
+
+    fun isContainDarkModeFlag(): Boolean {
+        return sharedPreferences.contains(IS_DARK_MODE)
+    }
 }
