@@ -32,10 +32,13 @@ object CommonUtils {
     }
 
     fun parseDateTime(dateStr: String?): String {
+        if (dateStr.isNullOrEmpty())
+            return ""
+
         val sdfOrigin = SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss zzz", Locale.US)
         val date = sdfOrigin.parse(dateStr)
 
-        val sdf = SimpleDateFormat("dd-MM-yyyy", Locale.US)
+        val sdf = SimpleDateFormat("EEEE, dd/MM/yyyy HH:mm", Locale("vi", "VN"))
         return sdf.format(date?.time)
     }
 }
